@@ -25,14 +25,12 @@ const useDarkMode = () => {
     const localTheme = window.localStorage.getItem("theme");
     if (localTheme) {
       setTheme(localTheme);
-    } else {
-      if (
-        localTheme === "dark" ||
-        (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      }
+    } else if (
+      localTheme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
     }
   }, []);
 
