@@ -10,7 +10,7 @@ const Tasks = ({ task }) => {
         Tasks
       </h2>
       {task.map((item) => (
-        <Card key={item}>
+        <Card key={item._id}>
           <div className="dark:text-gray-200 font-semibold">
             <span className="block my-2 text-black/70 dark:text-gray-200">
               {item.title}
