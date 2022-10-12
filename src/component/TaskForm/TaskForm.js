@@ -1,11 +1,16 @@
 import { useState } from "react";
 import InputField from "../UIElements/InputField/InputField";
+import Button from "../UIElements/Button/Button";
 
 const TaskForm = () => {
   const [title, setTitle] = useState("");
 
   const handleChange = (value) => {
     setTitle(value);
+  };
+
+  const submitTaskHandler = () => {
+    alert(title);
   };
 
   return (
@@ -22,6 +27,15 @@ const TaskForm = () => {
         }}
       />
       <InputField type="date" label="Date" />
+      <div className="mt-4">
+        <Button
+          title="Add Task"
+          bgColor="bg-blue-400"
+          textColor="text-white"
+          hoverColor="bg-orange-400"
+          clickHandler={submitTaskHandler}
+        />
+      </div>
     </div>
   );
 };
