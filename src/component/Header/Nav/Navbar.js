@@ -12,7 +12,7 @@ const Navbar = () => {
   const themeBtn = theme === "dark" ? sun : moon;
 
   const authContext = useContext(AuthContext);
-
+  const btnTitle = authContext.isAuth ? "Logout" : "Login";
   const loginHandler = () => {
     authContext.login();
   };
@@ -28,7 +28,7 @@ const Navbar = () => {
             <Button
               bgColor="bg-blue-400"
               textColor="text-white"
-              title="Login"
+              title={btnTitle}
               hoverColor="bg-yellow-300"
               hoverTextColor="text-gray-500"
               clickHandler={loginHandler}

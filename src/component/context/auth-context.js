@@ -9,7 +9,7 @@ const AuthContextProvider = (props) => {
   const [isLeggedIn, setIsLoggedIn] = useState(false);
 
   const logginHandler = () => {
-    setIsLoggedIn(true);
+    setIsLoggedIn(!isLeggedIn);
   };
 
   return (
