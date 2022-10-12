@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../component/context/auth-context";
 import TaskForm from "../component/TaskForm/TaskForm";
 import Tasks from "../component/Tasks/Tasks";
@@ -14,10 +14,21 @@ function Home() {
     moreTasks = <MoreTasks />;
   }
 
+  const [tasks, setTasks] = useState([]);
+  const submitTaskHandler = (item) => {
+    setTasks([
+      ...tasks,
+      {
+        title: item.title,
+        date: item.date
+      }
+    ]);
+  };
+
   return (
     <div className="mx-auto m-8 w-1/2">
-      <TaskForm />
-      <Tasks />
+      <TaskForm submitTask={submitTaskHandler} />
+      <Tasks task={tasks} />
       <div className="mt-4 w-full">{moreTasks}</div>
     </div>
   );

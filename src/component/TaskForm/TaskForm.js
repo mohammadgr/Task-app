@@ -2,15 +2,15 @@ import { useState } from "react";
 import InputField from "../UIElements/InputField/InputField";
 import Button from "../UIElements/Button/Button";
 
-const TaskForm = () => {
-  const [title, setTitle] = useState("");
-
-  const handleChange = (value) => {
-    setTitle(value);
-  };
+const TaskForm = ({ submitTask }) => {
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDate, setTaskDate] = useState("");
 
   const submitTaskHandler = () => {
-    alert(title);
+    submitTask({
+      title: taskTitle,
+      date: taskDate
+    });
   };
 
   return (
@@ -20,13 +20,16 @@ const TaskForm = () => {
         isValid="false"
         name="taskTitle"
         type="text"
-        value={title}
+        value={taskTitle}
         errorMessage="*Task Title field cannot empty!"
-        handleChange={(e) => {
-          handleChange(e.target.value);
-        }}
+        handleChange={(e) => setTaskTitle(e.target.value)}
       />
-      <InputField type="date" label="Date" />
+      <InputField
+        type="date"
+        label="Date"
+        value={taskDate}
+        handleChange={(e) => setTaskDate(e.target.value)}
+      />
       <div className="mt-4">
         <Button
           title="Add Task"
